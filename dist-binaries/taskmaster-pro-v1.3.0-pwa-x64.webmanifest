@@ -1,0 +1,17 @@
+{
+  "application": "TaskMaster Pro",
+  "version": "1.3.0",
+  "platform": "pwa",
+  "packagingEngine": "Progressive Web App",
+  "databaseDriver": "sqlite",
+  "sqlSchemaVersion": 5,
+  "noSqlSchemaVersion": 2,
+  "features": {
+    "enableMcpServer": true,
+    "enableTimeTracking": true,
+    "enableGeminiAi": true,
+    "enableAutoBackup": true,
+    "backupIntervalHours": 24
+  },
+  "buildTimestamp": "2026-08-26T05:39:59.224Z"
+}
