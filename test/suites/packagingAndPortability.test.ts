@@ -61,7 +61,7 @@ export const packagingAndPortabilitySuite = createSuite(
       expect(ciContent).toContain('npm test');
       expect(ciContent).toContain('npm run build');
       expect(releaseContent).toContain('softprops/action-gh-release');
-      expect(releaseContent).toContain('dist-binaries/*');
+      expect(releaseContent).toContain('dist-binaries/*.exe');
     });
   }
 );
