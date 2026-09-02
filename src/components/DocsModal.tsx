@@ -58,7 +58,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-white tracking-tight">TaskMaster Pro Documentation & Guides</h2>
+                <h2 className="text-lg font-bold text-white tracking-tight">Kriya Documentation & Guides</h2>
                 <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30">
                   Insider Release v1.3.0
                 </span>
@@ -196,7 +196,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({ isOpen, onClose }) => {
                     </button>
                   </div>
                   <pre className="font-mono text-xs text-emerald-400 bg-slate-950/70 p-2.5 rounded-lg overflow-x-auto">
-                    git clone https://github.com/your-org/taskmaster-pro.git && cd taskmaster-pro && npm install && npm run dev
+                    git clone https://github.com/kri-kan/Kriya.git && cd Kriya && npm install && npm run dev
                   </pre>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({ isOpen, onClose }) => {
                     Pluggable Database Adapters & Dialects
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    TaskMaster Pro abstracts all persistent storage behind a unified contract (<code className="bg-slate-200 px-1 py-0.5 rounded text-[11px]">DatabaseAdapter</code>). Supported engines include:
+                    Kriya abstracts all persistent storage behind a unified contract (<code className="bg-slate-200 px-1 py-0.5 rounded text-[11px]">DatabaseAdapter</code>). Supported engines include:
                   </p>
                   <ul className="text-xs text-slate-700 space-y-1 list-disc pl-5">
                     <li><strong>SQLite 3</strong>: Embedded file/memory store with WAL journal mode.</li>
@@ -256,7 +256,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({ isOpen, onClose }) => {
                         type="button"
                         onClick={() =>
                           handleCopy(
-                            'docker run --name taskmaster-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=taskmaster -p 5432:5432 -d postgres:16-alpine',
+                            'docker run --name kriya-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=kriya -p 5432:5432 -d postgres:16-alpine',
                             'docker-pg'
                           )
                         }
@@ -267,7 +267,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({ isOpen, onClose }) => {
                       </button>
                     </div>
                     <pre className="font-mono text-xs text-emerald-400 bg-slate-950/70 p-2.5 rounded-lg overflow-x-auto">
-                      docker run --name taskmaster-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=taskmaster -p 5432:5432 -d postgres:16-alpine
+                      docker run --name kriya-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=kriya -p 5432:5432 -d postgres:16-alpine
                     </pre>
                   </div>
 
@@ -373,7 +373,7 @@ export const DocsModal: React.FC<DocsModalProps> = ({ isOpen, onClose }) => {
         <div className="px-6 py-3.5 border-t border-slate-100 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span className="font-semibold text-slate-700">TaskMaster Pro v1.3.0-insider</span>
+            <span className="font-semibold text-slate-700">Kriya v1.3.0-insider</span>
             <span>•</span>
             <span>Production Ready</span>
           </div>

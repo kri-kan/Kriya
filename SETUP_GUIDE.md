@@ -1,6 +1,6 @@
-# TaskMaster Pro — Developer & Administrator Setup Guide
+# Kriya — Developer & Administrator Setup Guide
 
-This guide provides instructions for setting up, developing, testing, configuring, and deploying TaskMaster Pro.
+This guide provides instructions for setting up, developing, testing, configuring, and deploying Kriya.
 
 ---
 
@@ -21,8 +21,8 @@ This guide provides instructions for setting up, developing, testing, configurin
 ### 2.1 Clone and Install
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/taskmaster-pro.git
-cd taskmaster-pro
+git clone https://github.com/kri-kan/Kriya.git
+cd Kriya
 
 # Install base dependencies
 npm install
@@ -51,38 +51,38 @@ npm run dev
 
 ## 3. Database Engine Configuration
 
-TaskMaster Pro defaults to an embedded SQLite database (`sqlite`), but supports any of the following backends:
+Kriya defaults to an embedded SQLite database (`sqlite`), but supports any of the following backends:
 
 ### 3.1 PostgreSQL Setup
 ```bash
 # Run PostgreSQL in Docker
-docker run --name taskmaster-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=taskmaster -p 5432:5432 -d postgres:16-alpine
+docker run --name kriya-postgres -e POSTGRES_PASSWORD=secret -e POSTGRES_DB=kriya -p 5432:5432 -d postgres:16-alpine
 ```
 In the app's Database Modal or `.env`:
 - **Host**: `localhost`
 - **Port**: `5432`
-- **Database**: `taskmaster`
+- **Database**: `kriya`
 - **User**: `postgres`
 - **Password**: `secret`
 
 ### 3.2 MySQL 8 Setup
 ```bash
 # Run MySQL in Docker
-docker run --name taskmaster-mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=taskmaster -p 3306:3306 -d mysql:8.0
+docker run --name kriya-mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=kriya -p 3306:3306 -d mysql:8.0
 ```
 
 ### 3.3 MongoDB Setup
 ```bash
 # Run MongoDB in Docker
-docker run --name taskmaster-mongo -p 27017:27017 -d mongo:7.0
+docker run --name kriya-mongo -p 27017:27017 -d mongo:7.0
 ```
-- **Connection String**: `mongodb://localhost:27017/taskmaster`
+- **Connection String**: `mongodb://localhost:27017/kriya`
 
 ---
 
 ## 4. Model Context Protocol (MCP) Setup
 
-TaskMaster Pro embeds an MCP server over SSE at `http://localhost:3000/api/mcp/sse`.
+Kriya embeds an MCP server over SSE at `http://localhost:3000/api/mcp/sse`.
 
 ### 4.1 Claude Desktop Configuration
 Add the server definition to your `claude_desktop_config.json`:
@@ -92,7 +92,7 @@ Add the server definition to your `claude_desktop_config.json`:
 ```json
 {
   "mcpServers": {
-    "taskmaster": {
+    "kriya": {
       "url": "http://localhost:3000/api/mcp/sse"
     }
   }

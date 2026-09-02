@@ -4,7 +4,7 @@ import { SqlMigrationsEngine } from '../server/db/schema/sqlMigrationsEngine';
 
 async function verifyQuality() {
   console.log('=====================================================');
-  console.log('🛡️ TaskMaster Pro - CI/CD Quality & Evolution Gate');
+  console.log('🛡️ Kriya - CI/CD Quality & Evolution Gate');
   console.log('=====================================================\n');
 
   // 1. Check migrations integrity

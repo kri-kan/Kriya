@@ -36,7 +36,7 @@ export async function runInstallerBuild(targetPlatformId: string = 'all'): Promi
     console.log(msg);
   };
 
-  log(`🚀 Initializing TaskMaster Pro Automated Installer Generation Pipeline...`);
+  log(`🚀 Initializing Kriya Automated Installer Generation Pipeline...`);
 
   // Step 1: Run Preflight Diagnostics
   log(`🔍 Step 1/5: Running System Preflight Diagnostics...`);
@@ -55,8 +55,8 @@ export async function runInstallerBuild(targetPlatformId: string = 'all'): Promi
     log(`❌ Test suite failed (${testResults.failedTests} failed tests). Aborting installer build.`);
     return {
       success: false,
-      version: '1.2.0',
-      appName: 'TaskMaster Pro',
+      version: '1.3.0',
+      appName: 'Kriya',
       timestamp: new Date().toISOString(),
       testsPassed: false,
       preflightPassed,
@@ -80,8 +80,8 @@ export async function runInstallerBuild(targetPlatformId: string = 'all'): Promi
 
   const artifacts: GeneratedArtifact[] = [];
   const preferences = installManager.getPreferences();
-  const version = preferences.version || '1.2.0';
-  const appSlug = 'taskmaster-pro';
+  const version = preferences.version || '1.3.0';
+  const appSlug = 'kriya';
 
   for (const target of targets) {
     log(`   🔨 Building ${target.name} (${target.primaryExtension})...`);

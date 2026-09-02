@@ -77,7 +77,7 @@ async function main() {
   const filterArg = args.find((a) => a.startsWith('--filter='))?.split('=')[1];
 
   console.log('\n======================================================');
-  console.log('🧪 TaskMaster Pro - Automated Test Suite & Regression Guard');
+  console.log('🧪 Kriya - Automated Test Suite & Regression Guard');
   console.log('======================================================\n');
 
   const summary = await runAllTests(undefined, filterArg);

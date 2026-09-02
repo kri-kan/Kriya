@@ -204,8 +204,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
             {(isOpen || isMobile) && (
               <div className="truncate">
-                <h1 className="text-sm font-bold text-slate-800 tracking-tight leading-tight">To-Do & Tracker</h1>
-                <p className="text-xs text-slate-500 truncate">Workspace</p>
+                <h1 className="text-sm font-bold text-slate-800 tracking-tight leading-tight">Kriya</h1>
+                <p className="text-xs text-slate-500 truncate">Task & Time Engine</p>
               </div>
             )}
           </div>

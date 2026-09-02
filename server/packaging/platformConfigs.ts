@@ -94,9 +94,9 @@ export const PLATFORM_TARGETS: PlatformTargetInfo[] = [
 ];
 
 export const ELECTRON_BUILDER_CONFIG = `{
-  "appId": "com.taskmaster.pro",
-  "productName": "TaskMaster Pro",
-  "copyright": "Copyright © 2026 TaskMaster Team",
+  "appId": "com.kriya.app",
+  "productName": "Kriya",
+  "copyright": "Copyright © 2026 Kriya Team",
   "directories": {
     "output": "dist-electron"
   },
@@ -117,7 +117,7 @@ export const ELECTRON_BUILDER_CONFIG = `{
     "allowToChangeInstallationDirectory": true,
     "createDesktopShortcut": true,
     "createStartMenuShortcut": true,
-    "shortcutName": "TaskMaster Pro"
+    "shortcutName": "Kriya"
   },
   "linux": {
     "target": ["AppImage", "deb", "rpm"],
@@ -135,8 +135,8 @@ export const ELECTRON_BUILDER_CONFIG = `{
 export const CAPACITOR_CONFIG = `import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.taskmaster.pro',
-  appName: 'TaskMaster Pro',
+  appId: 'com.kriya.app',
+  appName: 'Kriya',
   webDir: 'dist',
   server: {
     androidScheme: 'https',

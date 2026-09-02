@@ -1,4 +1,4 @@
-# TaskMaster Pro — Insider Release Notes (v1.3.0-insider)
+# Kriya — Insider Release Notes (v1.3.0-insider)
 
 **Release Date:** September 1, 2026  
 **Build Target:** Universal (Web, Desktop, Mobile, AI Agents)  

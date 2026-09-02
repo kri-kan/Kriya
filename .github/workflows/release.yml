@@ -1,0 +1,88 @@
+name: Publish Multi-Platform Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name for release (e.g. v1.3.0)'
+        required: true
+        default: 'v1.3.0'
+      prerelease:
+        description: 'Mark as pre-release'
+        type: boolean
+        default: false
+      draft:
+        description: 'Create draft release'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build-and-release:
+    name: Build Artifacts & Publish Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ⚡ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🔍 Lint & Run Test Suite
+        run: |
+          npm run lint
+          npm test
+          npm run verify
+
+      - name: 🏗️ Compile Production Bundle
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: 📦 Generate Universal Cross-Platform Installers
+        run: npm run build:installer all
+
+      - name: 📝 Determine Tag & Version
+        id: versioning
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.tag_name }}"
+          else
+            TAG="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "TAG=$TAG" >> $GITHUB_OUTPUT
+          echo "VERSION=${TAG#v}" >> $GITHUB_OUTPUT
+
+      - name: 🗜️ Archive Server & Web Package
+        run: |
+          tar -czf dist-binaries/kriya-standalone-server.tar.gz dist/ package.json .env.example
+          zip -r dist-binaries/kriya-web-dist.zip dist/
+
+      - name: 🚀 Publish GitHub Release with Platform Binaries
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.versioning.outputs.TAG }}
+          name: "Kriya ${{ steps.versioning.outputs.TAG }} — Multi-Database Task & Time Engine"
+          draft: ${{ github.event.inputs.draft || false }}
+          prerelease: ${{ github.event.inputs.prerelease || false }}
+          body_path: INSIDER_RELEASE_NOTES.md
+          generate_release_notes: true
+          files: |
+            dist-binaries/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -130,11 +130,11 @@ export const DatabaseModal: React.FC<DatabaseModalProps> = ({ isOpen, onClose })
   const [configForm, setConfigForm] = useState({
     host: 'localhost',
     port: '',
-    database: 'todo_db',
+    database: 'kriya_db',
     user: 'root',
     password: '',
     connectionString: '',
-    projectId: 'todo-taskmaster-prod',
+    projectId: 'kriya-prod',
     ssl: false,
   });
 
@@ -156,11 +156,11 @@ export const DatabaseModal: React.FC<DatabaseModalProps> = ({ isOpen, onClose })
         setConfigForm({
           host: c.host || 'localhost',
           port: c.port ? String(c.port) : '',
-          database: c.database || 'todo_db',
+          database: c.database || 'kriya_db',
           user: c.user || 'root',
           password: '',
           connectionString: c.connectionString || '',
-          projectId: c.projectId || 'todo-taskmaster-prod',
+          projectId: c.projectId || 'kriya-prod',
           ssl: Boolean(c.ssl),
         });
       }
@@ -267,7 +267,7 @@ export const DatabaseModal: React.FC<DatabaseModalProps> = ({ isOpen, onClose })
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `todo-taskmaster-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `kriya-backup-${new Date().toISOString().slice(0, 10)}.json`;
       a.click();
       URL.revokeObjectURL(url);
     } catch {
@@ -660,7 +660,7 @@ export const DatabaseModal: React.FC<DatabaseModalProps> = ({ isOpen, onClose })
                           type="text"
                           value={configForm.projectId}
                           onChange={(e) => setConfigForm({ ...configForm, projectId: e.target.value })}
-                          placeholder="todo-taskmaster-prod"
+                          placeholder="kriya-prod"
                           className="w-full px-3 py-2 border border-slate-200 rounded-lg text-xs bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 font-mono"
                         />
                         <p className="text-[11px] text-slate-400">
@@ -851,7 +851,7 @@ export const DatabaseModal: React.FC<DatabaseModalProps> = ({ isOpen, onClose })
                   </span>
                 </div>
                 <p className="text-xs text-emerald-200 leading-relaxed">
-                  Unlike traditional relational tables, MongoDB & Firestore document stores rely on application-level schema enforcement. TaskMaster enforces automatic document sanitization, schema version tagging (<code className="font-mono bg-emerald-900 px-1 rounded">_schemaVersion: 2</code>), and real-time backwards-compatibility upgrades from legacy v1 documents.
+                  Unlike traditional relational tables, MongoDB & Firestore document stores rely on application-level schema enforcement. Kriya enforces automatic document sanitization, schema version tagging (<code className="font-mono bg-emerald-900 px-1 rounded">_schemaVersion: 2</code>), and real-time backwards-compatibility upgrades from legacy v1 documents.
                 </p>
               </div>
 

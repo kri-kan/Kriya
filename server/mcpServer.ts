@@ -4,8 +4,8 @@ import { dbFactory } from './db/factory';
 
 export function createMcpServer(): McpServer {
   const server = new McpServer({
-    name: 'TodoTaskMasterMCP',
-    version: '1.2.0',
+    name: 'KriyaMCP',
+    version: '1.3.0',
   });
 
   // =========================================================================

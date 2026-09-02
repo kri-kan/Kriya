@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { createSuite, expect } from '../framework';
 import {
   PLATFORM_TARGETS,
@@ -25,7 +27,7 @@ export const packagingAndPortabilitySuite = createSuite(
 
     suite.it('should generate valid Electron builder configuration with NSIS and DMG targets', () => {
       const config = JSON.parse(ELECTRON_BUILDER_CONFIG);
-      expect(config.appId).toBe('com.taskmaster.pro');
+      expect(config.appId).toBe('com.kriya.app');
       expect(config.directories.output).toBe('dist-electron');
       expect(config.linux.target).toContain('AppImage');
       expect(config.linux.target).toContain('deb');
@@ -34,7 +36,7 @@ export const packagingAndPortabilitySuite = createSuite(
 
     suite.it('should generate valid Capacitor mobile configuration for Android and iOS', () => {
       expect(CAPACITOR_CONFIG).toContain('appId');
-      expect(CAPACITOR_CONFIG).toContain('TaskMaster Pro');
+      expect(CAPACITOR_CONFIG).toContain('Kriya');
       expect(CAPACITOR_CONFIG).toContain('webDir');
     });
 
@@ -44,6 +46,22 @@ export const packagingAndPortabilitySuite = createSuite(
       expect(GITHUB_ACTIONS_RELEASE_WORKFLOW).toContain('ubuntu-latest');
       expect(GITHUB_ACTIONS_RELEASE_WORKFLOW).toContain('macos-latest');
       expect(GITHUB_ACTIONS_RELEASE_WORKFLOW).toContain('electron-builder --publish always');
+    });
+
+    suite.it('should have functional CI and Release GitHub Actions workflows on filesystem', () => {
+      const ciPath = path.join(process.cwd(), '.github', 'workflows', 'ci.yml');
+      const releasePath = path.join(process.cwd(), '.github', 'workflows', 'release.yml');
+
+      expect(fs.existsSync(ciPath)).toBe(true);
+      expect(fs.existsSync(releasePath)).toBe(true);
+
+      const ciContent = fs.readFileSync(ciPath, 'utf-8');
+      const releaseContent = fs.readFileSync(releasePath, 'utf-8');
+
+      expect(ciContent).toContain('npm test');
+      expect(ciContent).toContain('npm run build');
+      expect(releaseContent).toContain('softprops/action-gh-release');
+      expect(releaseContent).toContain('dist-binaries/*');
     });
   }
 );

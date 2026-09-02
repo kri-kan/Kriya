@@ -1,12 +1,12 @@
-# TaskMaster Pro — User & Power-User Manual (Insider Release)
+# Kriya — User & Power-User Manual (Insider Release)
 
-Welcome to the **TaskMaster Pro Insider Release**! This guide covers all user-facing workflows, advanced scheduling capabilities, time-tracking tools, database switching, and AI agent integration.
+Welcome to **Kriya**! This guide covers all user-facing workflows, advanced scheduling capabilities, time-tracking tools, database switching, and AI agent integration.
 
 ---
 
 ## 1. Quick Tour & Interface Layout
 
-TaskMaster Pro is divided into 3 primary areas:
+Kriya is divided into 3 primary areas:
 
 ```
 ┌─────────────────┬──────────────────────────────────┬─────────────────┐
@@ -105,13 +105,13 @@ Access the **Database Modal** via the bottom-left sidebar button:
 
 ## 7. Model Context Protocol (MCP) Integration with AI Agents
 
-TaskMaster Pro can be controlled directly by LLM assistants such as Claude Desktop, Cursor, or Gemini:
+Kriya can be controlled directly by LLM assistants such as Claude Desktop, Cursor, or Gemini:
 1. Open the **MCP Agent Hub** modal from the sidebar.
 2. Copy the generated `claude_desktop_config.json` snippet:
    ```json
    {
      "mcpServers": {
-       "taskmaster": {
+       "kriya": {
          "url": "http://localhost:3000/api/mcp/sse"
        }
      }

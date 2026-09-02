@@ -1,8 +1,8 @@
-# TaskMaster Pro — System Architecture & Engineering Specification
+# Kriya — System Architecture & Engineering Specification
 
 ## 1. Executive Summary
 
-TaskMaster Pro is built around a decoupled full-stack architecture consisting of a **React 19 single-page client**, an **Express service layer**, a **Pluggable Multi-Database Abstraction Layer**, and a **Model Context Protocol (MCP)** server.
+Kriya is built around a decoupled full-stack architecture consisting of a **React 19 single-page client**, an **Express service layer**, a **Pluggable Multi-Database Abstraction Layer**, and a **Model Context Protocol (MCP)** server.
 
 The core design goals of the platform are:
 1. **Pluggable Storage & Zero-Downtime Migration**: Support diverse relational (SQLite, PostgreSQL, MySQL, MSSQL) and document-oriented (MongoDB, Firestore) databases with live hot-swapping.
@@ -113,7 +113,7 @@ For document databases (MongoDB, Firestore), schema enforcement occurs at the ap
 
 ## 5. Model Context Protocol (MCP) Server Architecture
 
-TaskMaster Pro embeds an MCP Server compliant with Model Context Protocol specification v1.30:
+Kriya embeds an MCP Server compliant with Model Context Protocol specification v1.30:
 - **Transport**: Server-Sent Events (SSE) mounted at `/api/mcp/sse` with bidirectional messaging via `/api/mcp/messages?sessionId=<id>`.
 - **Tool Registrations**:
   - `list_tasks`: Retrieves tasks filtered by status (`all`, `pending`, `completed`), list, or search query.

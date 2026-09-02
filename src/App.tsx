@@ -87,7 +87,7 @@ function AppContent() {
                   <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
                     <Layers className="w-3.5 h-3.5" />
                   </div>
-                  <span className="font-bold text-sm text-slate-800">To-Do</span>
+                  <span className="font-bold text-sm text-slate-800">Kriya</span>
                 </div>
               </div>
               <button

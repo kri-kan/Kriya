@@ -91,9 +91,9 @@ export const InstallerModal: React.FC<InstallerModalProps> = ({ isOpen, onClose 
 
   // Form State
   const [selectedDriver, setSelectedDriver] = useState<string>('sqlite');
-  const [appName, setAppName] = useState('TaskMaster Pro');
+  const [appName, setAppName] = useState('Kriya');
   const [adminName, setAdminName] = useState('Administrator');
-  const [adminEmail, setAdminEmail] = useState('admin@taskmaster.local');
+  const [adminEmail, setAdminEmail] = useState('admin@kriya.local');
   const [port, setPort] = useState(3000);
   const [enableMcp, setEnableMcp] = useState(true);
   const [enableTimeTracking, setEnableTimeTracking] = useState(true);
@@ -166,9 +166,9 @@ export const InstallerModal: React.FC<InstallerModalProps> = ({ isOpen, onClose 
       if (data.preferences) {
         setPreferences(data.preferences);
         setSelectedDriver(data.preferences.database?.driver || 'sqlite');
-        setAppName(data.preferences.appName || 'TaskMaster Pro');
+        setAppName(data.preferences.appName || 'Kriya');
         setAdminName(data.preferences.userProfile?.adminName || 'Administrator');
-        setAdminEmail(data.preferences.userProfile?.adminEmail || 'admin@taskmaster.local');
+        setAdminEmail(data.preferences.userProfile?.adminEmail || 'admin@kriya.local');
         setPort(data.preferences.server?.port || 3000);
         setEnableMcp(data.preferences.features?.enableMcpServer ?? true);
         setEnableTimeTracking(data.preferences.features?.enableTimeTracking ?? true);
@@ -613,7 +613,7 @@ export const InstallerModal: React.FC<InstallerModalProps> = ({ isOpen, onClose 
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                       <div>
-                        <div className="text-xs font-bold text-emerald-900">TaskMaster Pro is Configured & Ready</div>
+                        <div className="text-xs font-bold text-emerald-900">Kriya is Configured & Ready</div>
                         <div className="text-[11px] text-emerald-700">
                           Active Driver: <span className="font-mono font-semibold">{selectedDriver.toUpperCase()}</span> | SQL Migration Version: <span className="font-mono font-semibold">v{preferences?.database.sqlSchemaVersion || 4}</span>
                         </div>

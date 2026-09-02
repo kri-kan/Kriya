@@ -62,8 +62,8 @@ export class InstallManager {
 
   private constructor() {
     this.currentPreferences = {
-      appName: 'TaskMaster Pro',
-      version: '1.2.0',
+      appName: 'Kriya',
+      version: '1.3.0',
       installedAt: new Date().toISOString(),
       lastUpgradedAt: new Date().toISOString(),
       isInstalled: true,
@@ -74,7 +74,7 @@ export class InstallManager {
           driver: 'sqlite',
           connectionString: 'data/tasks.sqlite',
           host: 'localhost',
-          database: 'todo_db',
+          database: 'kriya_db',
         },
         sqlSchemaVersion: SqlMigrationsEngine.getCurrentAppliedVersion(),
         noSqlSchemaVersion: CURRENT_NOSQL_SCHEMA_VERSION,
@@ -94,8 +94,8 @@ export class InstallManager {
         backupIntervalHours: 24,
       },
       userProfile: {
-        adminName: 'Task Master User',
-        adminEmail: 'user@example.com',
+        adminName: 'Kriya User',
+        adminEmail: 'user@kriya.local',
         defaultTheme: 'system',
         firstDayOfWeek: 'monday',
       },
@@ -183,7 +183,7 @@ export class InstallManager {
     logs: string[];
   }> {
     const logs: string[] = [];
-    logs.push(`[Installer] Starting TaskMaster installation sequence...`);
+    logs.push(`[Installer] Starting Kriya installation sequence...`);
 
     if (prefs.appName) this.currentPreferences.appName = prefs.appName;
     if (prefs.environment) this.currentPreferences.environment = prefs.environment;

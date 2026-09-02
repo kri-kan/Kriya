@@ -1,6 +1,6 @@
 {
-  "name": "To-Do & Time Tracker",
-  "description": "A responsive Microsoft To Do-inspired task management application with custom task lists, subtasks, live time tracking, scheduling, CSV export, and Model Context Protocol (MCP) server integration.",
+  "name": "Kriya",
+  "description": "Enterprise-grade task execution & live time-tracking suite with a pluggable multi-database architecture (SQL/NoSQL) and native Model Context Protocol (MCP) AI integration.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

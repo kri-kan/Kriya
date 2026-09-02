@@ -1,6 +1,6 @@
-# Contributing to TaskMaster Pro
+# Contributing to Kriya
 
-Thank you for contributing to TaskMaster Pro! This guide outlines our development workflow, coding standards, automated test requirements, and procedures for adding new database adapters, migrations, or MCP tools.
+Thank you for contributing to Kriya! This guide outlines our development workflow, coding standards, automated test requirements, and procedures for adding new database adapters, migrations, or MCP tools.
 
 ---
 

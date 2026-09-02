@@ -1,5 +1,5 @@
 /**
- * Lightweight, robust TypeScript test harness for TaskMaster Pro.
+ * Lightweight, robust TypeScript test harness for Kriya.
  * Provides assertion helpers, test grouping, execution timing, and structured reporting
  * compatible with both CLI execution and Web API consumption.
  */

@@ -1,0 +1,59 @@
+name: CI & Quality Gate
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Lint, Test & Build (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20.x, 22.x]
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🔍 TypeScript Lint & Typecheck
+        run: npm run lint
+
+      - name: 🧪 Run Automated Test Suite (11 Suites / 49 Tests)
+        run: npm test
+
+      - name: 🛡️ Verify Migration & Schema Integrity
+        run: npm run verify
+
+      - name: 🏗️ Production Application Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: 📦 Build Universal Installer Artifacts
+        run: npm run build:installer all
+
+      - name: 📊 Upload Test & Installer Artifacts
+        uses: actions/upload-artifact@v4
+        if: matrix.node-version == '20.x'
+        with:
+          name: kriya-dist-binaries
+          path: dist-binaries/
+          retention-days: 7

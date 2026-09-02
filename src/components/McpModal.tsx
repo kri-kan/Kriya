@@ -75,9 +75,9 @@ export const McpModal: React.FC<McpModalProps> = ({ isOpen, onClose }) => {
       .catch(() => {
         const origin = window.location.origin;
         setMcpInfo({
-          name: 'TodoTaskMasterMCP',
-          version: '1.0.0',
-          description: 'Model Context Protocol (MCP) Server for To-Do & Time Tracker',
+          name: 'KriyaMCP',
+          version: '1.3.0',
+          description: 'Model Context Protocol (MCP) Server for Kriya Task & Time Engine',
           endpoints: {
             sse: `${origin}/sse`,
             messages: `${origin}/messages`,
@@ -86,14 +86,14 @@ export const McpModal: React.FC<McpModalProps> = ({ isOpen, onClose }) => {
           clientConfigs: {
             claudeDesktop: {
               mcpServers: {
-                'todo-task-master': {
+                kriya: {
                   command: 'npx',
                   args: ['-y', '@modelcontextprotocol/inspector', `${origin}/sse`],
                 },
               },
             },
             cursorOrWindsurf: {
-              name: 'todo-task-master',
+              name: 'kriya',
               type: 'sse',
               url: `${origin}/sse`,
             },

@@ -417,7 +417,7 @@ export const PortabilityModal: React.FC<PortabilityModalProps> = ({ isOpen, onCl
                     windows-latest runner
                   </div>
                   <p className="text-[11px] text-slate-500">
-                    Outputs <span className="font-mono text-slate-700 font-semibold">TaskMasterPro-win-x64.exe</span> (NSIS Installer) & portable executable.
+                    Outputs <span className="font-mono text-slate-700 font-semibold">Kriya-win-x64.exe</span> (NSIS Installer) & portable executable.
                   </p>
                 </div>
 

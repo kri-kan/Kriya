@@ -234,9 +234,9 @@ async function startServer() {
     const adapter = dbFactory.getAdapter();
 
     res.json({
-      name: 'TodoTaskMasterMCP',
-      version: '1.2.0',
-      description: 'Model Context Protocol (MCP) Server for To-Do & Time Tracker with Pluggable Backends',
+      name: 'KriyaMCP',
+      version: '1.3.0',
+      description: 'Model Context Protocol (MCP) Server for Kriya Task Execution & Time Tracking',
       activeDatabase: {
         driver: adapter.type,
         name: adapter.name,
@@ -249,14 +249,14 @@ async function startServer() {
       clientConfigs: {
         claudeDesktop: {
           mcpServers: {
-            'todo-task-master': {
+            kriya: {
               command: 'npx',
               args: ['-y', '@modelcontextprotocol/inspector', `${baseUrl}/sse`],
             },
           },
         },
         cursorOrWindsurf: {
-          name: 'todo-task-master',
+          name: 'kriya',
           type: 'sse',
           url: `${baseUrl}/sse`,
         },
@@ -746,7 +746,7 @@ async function startServer() {
       res.json({
         platform: target,
         status: 'SUCCESS',
-        artifactName: `TaskMasterPro-${target.id}-v1.2.0${target.primaryExtension}`,
+        artifactName: `Kriya-${target.id}-v1.3.0${target.primaryExtension}`,
         size: target.category === 'Desktop' ? '68.4 MB' : target.category === 'Mobile' ? '24.1 MB' : '1.4 MB',
         checksum: 'sha256-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
         builtAt: new Date().toISOString(),

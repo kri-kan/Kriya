@@ -1,7 +1,13 @@
 {
-  "name": "react-example",
+  "name": "kriya",
+  "version": "1.3.0",
+  "description": "Enterprise-grade task execution & live time-tracking suite with a pluggable multi-database architecture (SQL/NoSQL) and native Model Context Protocol (MCP) AI integration.",
+  "homepage": "https://github.com/kri-kan/Kriya",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kri-kan/Kriya.git"
+  },
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",

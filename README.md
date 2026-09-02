@@ -1,12 +1,14 @@
-# TaskMaster Pro — Enterprise Task & Time Tracking Platform (Insider Release v1.3.0)
+# Kriya — Enterprise Task Execution & Live Time-Tracking Suite (v1.3.0)
 
-[![Insider Release](https://img.shields.io/badge/Release-v1.3.0--insider-blueviolet.svg?style=flat-square)](https://github.com)
-[![Build Status](https://img.shields.io/badge/Build-Passing-emerald.svg?style=flat-square)](https://github.com)
-[![Test Coverage](https://img.shields.io/badge/Tests-47%20Passed%20(11%20Suites)-success.svg?style=flat-square)](https://github.com)
+[![Repository](https://img.shields.io/badge/GitHub-kri--kan%2FKriya-blue?style=flat-square&logo=github)](https://github.com/kri-kan/Kriya)
+[![CI/CD Pipeline](https://github.com/kri-kan/Kriya/actions/workflows/ci.yml/badge.svg)](https://github.com/kri-kan/Kriya/actions/workflows/ci.yml)
+[![Release Pipeline](https://github.com/kri-kan/Kriya/actions/workflows/release.yml/badge.svg)](https://github.com/kri-kan/Kriya/actions/workflows/release.yml)
+[![Release](https://img.shields.io/badge/Release-v1.3.0--insider-blueviolet.svg?style=flat-square)](https://github.com/kri-kan/Kriya)
+[![Test Coverage](https://img.shields.io/badge/Tests-49%20Passed%20(11%20Suites)-success.svg?style=flat-square)](https://github.com/kri-kan/Kriya)
 [![Protocol](https://img.shields.io/badge/Protocol-MCP%20Server%20v1.30-blue.svg?style=flat-square)](https://modelcontextprotocol.io)
-[![Multi-Database](https://img.shields.io/badge/Databases-SQLite%20%7C%20Postgres%20%7C%20MySQL%20%7C%20MSSQL%20%7C%20MongoDB%20%7C%20Firestore-orange.svg?style=flat-square)](https://github.com)
+[![Multi-Database](https://img.shields.io/badge/Databases-SQLite%20%7C%20Postgres%20%7C%20MySQL%20%7C%20MSSQL%20%7C%20MongoDB%20%7C%20Firestore-orange.svg?style=flat-square)](https://github.com/kri-kan/Kriya)
 
-**TaskMaster Pro** is a high-performance, responsive task management, scheduling, and live time-tracking application inspired by modern productivity suites (Microsoft To Do, Linear, Things 3). Built with modern React 19, Tailwind CSS v4, an Express service layer, and a pluggable multi-database architecture supporting zero-downtime hot-swapping and AI agent integration via the Model Context Protocol (MCP).
+**Kriya** (*Sanskrit for "action/execution"*) is a high-performance, enterprise-grade task execution, scheduling, and live time-tracking application inspired by modern productivity suites (Microsoft To Do, Linear, Things 3). Built with React 19, Tailwind CSS, an Express service layer, a pluggable multi-database architecture supporting zero-downtime hot-swapping, and native AI agent integration via the Model Context Protocol (MCP).
 
 ---
 
@@ -29,7 +31,7 @@
   - NoSQL code-level schema validator with backwards-compatible schema version tagging.
 - **🤖 Model Context Protocol (MCP) Server**:
   - Native SSE (Server-Sent Events) and JSON-RPC 2.0 endpoint (`/api/mcp/sse` & `/api/mcp/messages`).
-  - Out-of-the-box tools for AI assistants (Claude Desktop, Cursor, Gemini, and custom agents): `list_tasks`, `create_task`, `toggle_task`, `filter_tasks`, `time_summary`.
+  - Out-of-the-box tools for AI assistants (Claude Desktop, Cursor, Gemini, and custom agents): `manage_tasks`, `manage_subtasks`, `manage_time_tracking`, `manage_lists`, `task_analytics`.
 - **📦 Cross-Platform Portability & Automated Installer**:
   - Pre-configured packaging configurations for **Windows** (`.exe`), **macOS** (`.dmg`), **Linux** (`.AppImage`), **Android** (`.apk`), **iOS** (`.ipa`), and **Progressive Web App (PWA)**.
   - Automated binary compilation script and single-click in-app generation pipeline (`npm run build:installer`).
@@ -47,8 +49,8 @@
 ### 2. Installation & Launch
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/taskmaster-pro.git
-cd taskmaster-pro
+git clone https://github.com/kri-kan/Kriya.git
+cd Kriya
 
 # Install dependencies
 npm install
@@ -79,12 +81,12 @@ Visit `http://localhost:3000` in your web browser.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        TaskMaster Pro Frontend                         │
+│                              Kriya Frontend                            │
 │   (React 19 + Tailwind CSS v4 + Lucide Icons + Motion Animations)      │
 └──────────────────────────────────┬─────────────────────────────────────┘
                                    │ HTTP REST / SSE Transports
 ┌──────────────────────────────────▼─────────────────────────────────────┐
-│                   TaskMaster Express Backend Layer                     │
+│                       Kriya Express Backend Layer                      │
 │                (Port 3000 / Ingress Reverse Proxy)                     │
 ├──────────────────┬───────────────────┬─────────────────────────────────┤
 │  REST API Layer  │  MCP SSE Server   │    Installer & Package Engine   │
@@ -110,6 +112,7 @@ For an in-depth architectural breakdown, please consult [ARCHITECTURE.md](./ARCH
 ## 📚 Complete Documentation Index
 
 - 🏗️ **[Architecture Guide](./ARCHITECTURE.md)**: Deep-dive into database adapters, zero-downtime migration, SQL evolution, NoSQL validator, MCP protocol, and packaging topologies.
+- 🚀 **[Pipelines & Releases Guide](./PIPELINES_AND_RELEASES.md)**: GitHub Actions CI/CD workflows, automated releases, and artifact distribution on free GitHub accounts.
 - 📖 **[User & Power-User Guide](./USER_GUIDE.md)**: Complete guide to scheduling, time tracking, Eisenhower matrix, custom lists, CSV export, and database management.
 - ⚙️ **[Setup & Deployment Guide](./SETUP_GUIDE.md)**: Developer workstation setup, environment variables, PostgreSQL/MySQL provisioning, and container deployment.
 - 🤝 **[Contributing Guidelines](./CONTRIBUTING.md)**: Code standards, writing test suites, adding SQL migrations, adding MCP tools, and PR review workflow.
@@ -127,4 +130,4 @@ For an in-depth architectural breakdown, please consult [ARCHITECTURE.md](./ARCH
 
 ## 📄 License
 
-MIT License — Copyright (c) 2026 TaskMaster Pro Contributors.
+MIT License — Copyright (c) 2026 Kriya Contributors.
