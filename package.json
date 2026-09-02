@@ -17,6 +17,8 @@
     "clean": "rm -rf dist server.js dist-binaries",
     "lint": "tsc --noEmit",
     "test": "tsx test/runTests.ts",
+    "setup": "tsx scripts/setupWizard.ts",
+    "configure": "tsx scripts/setupWizard.ts",
     "build:installer": "tsx scripts/buildInstaller.ts",
     "verify": "tsx scripts/verifyQuality.ts"
   },

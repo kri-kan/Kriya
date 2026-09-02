@@ -89,7 +89,60 @@ export async function runInstallerBuild(targetPlatformId: string = 'all'): Promi
     const artifactName = `${appSlug}-v${version}-${target.id}-x64${target.primaryExtension}`;
     const artifactPath = path.join(distBinDir, artifactName);
 
-    // Generate simulated self-contained executable package with manifest
+    // If target is Windows, generate a valid runnable setup and launcher scripts
+    if (target.id === 'windows') {
+      const batLauncherPath = path.join(distBinDir, `${appSlug}-v${version}-windows-launcher.bat`);
+      const batContent = `@echo off
+title Kriya Task & Time Suite (v${version})
+echo ========================================================
+echo   Launching Kriya v${version} Local Server...
+echo ========================================================
+echo.
+
+where node >nul 2>nul
+if %errorlevel% neq 0 (
+  echo [ERROR] Node.js is not found on your system PATH.
+  echo Please install Node.js from https://nodejs.org to run Kriya locally.
+  pause
+  exit /b 1
+)
+
+echo Starting Kriya backend and web interface...
+start "" "http://localhost:3000"
+node "%~dp0..\\dist\\server.cjs"
+if %errorlevel% neq 0 (
+  node "%~dp0dist\\server.cjs"
+)
+pause
+`;
+      fs.writeFileSync(batLauncherPath, batContent, 'utf-8');
+
+      const batSetupPath = path.join(distBinDir, `${appSlug}-v${version}-windows-setup-wizard.bat`);
+      const setupContent = `@echo off
+title Kriya Setup Wizard (v${version})
+echo ========================================================
+echo   Starting Kriya Interactive Configuration Wizard...
+echo ========================================================
+echo.
+
+where node >nul 2>nul
+if %errorlevel% neq 0 (
+  echo [ERROR] Node.js is not found on your system PATH.
+  echo Please install Node.js from https://nodejs.org to run Kriya setup.
+  pause
+  exit /b 1
+)
+
+npx tsx scripts/setupWizard.ts
+if %errorlevel% neq 0 (
+  node scripts/setupWizard.js
+)
+pause
+`;
+      fs.writeFileSync(batSetupPath, setupContent, 'utf-8');
+    }
+
+    // Generate self-contained distribution descriptor
     const binaryPayload = JSON.stringify(
       {
         application: preferences.appName,
@@ -101,6 +154,9 @@ export async function runInstallerBuild(targetPlatformId: string = 'all'): Promi
         noSqlSchemaVersion: preferences.database.noSqlSchemaVersion,
         features: preferences.features,
         buildTimestamp: new Date().toISOString(),
+        instructions: target.id === 'windows'
+          ? 'To run on Windows, use kriya-v' + version + '-windows-launcher.bat or run "npm start" / "node dist/server.cjs".'
+          : 'To run, execute node dist/server.cjs or use the platform runner.',
       },
       null,
       2
